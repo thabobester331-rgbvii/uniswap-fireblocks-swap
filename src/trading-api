@@ -1,0 +1,105 @@
+package_json =
+'''
+{
+  "name": "uniswap-fireblocks-swap",
+  "version": "1.0.0",
+  "description": "Production-ready Uniswap swap integration with Fireblocks MPC custody",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node src/config.ts",
+    "lint": "eslint src/**/*.ts",
+    "test": "jest",
+    "trading:quote": "ts-node src/trading-api/quote.ts",
+    "trading:execute": "ts-node src/trading-api/execute.ts",
+    "uniswap:quote": "ts-node src/uniswap-api/quote.ts",
+    "uniswap:submit": "ts-node src/uniswap-api/submit.ts"
+  },
+  "keywords": [
+    "uniswap",
+    "fireblocks",
+    "defi",
+    "trading",
+    "mpc",
+    "ethereum",
+    "dex"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@fireblocks/ts-sdk": "^2.1.0",
+    "ethers": "^6.13.0",
+    "dotenv": "^16.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "typescript": "^5.5.0",
+    "ts-node": "^10.9.0",
+    "eslint": "^8.57.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.0",
+    "ts-jest": "^29.1.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
+'''
+
+with open("/mnt/agents/output/uniswap-fireblocks-swap/package.json", "w") as f:
+    f.write(package_json)
+
+print("Created package.json")
+tsconfig = '''{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "commonjs",
+    "lib": ["ES2022"],
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "**/*.test.ts"]
+}
+'''
+
+with open("/mnt/agents/output/uniswap-firebl
+FIREBLOCKS_API_KEY=your-fireblocks-api-key-here
+FIREBLOCKS_SECRET_KEY_PATH=./fireblocks_secret.key
+FIREBLOCKS_BASE_PATH=https://api.fireblocks.io
+
+FIREBLOCKS_SOURCE_VAULT_ACCOUNT_ID=0
+FIREBLOCKS_DESTINATION_VAULT_ACCOUNT_ID=0
+
+
+UNISWAP_API_KEY=your-uniswap-api-key-from-developers.uniswap.org
+UNISWAP_API_URL=https://trade-api.gateway.uniswap.org/v1
+
+
+ETHEREUM_RPC_URL=https://mainnet.infura.io/v3/YOUR_INFURA_KEY
+CHAIN_ID=1
+
+DEFAULT_SLIPPAGE_BPS=50
+DEFAULT_DEADLINE_MINUTES=20
+
+'''
+
+with open("/mnt/agents/output/uniswap-fireblocks-swap/.env.example", "w") as f:
+    f.write(env_example)
+
+print("Created tsconfig.json and .env.example")
